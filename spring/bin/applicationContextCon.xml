@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:bike.peroperties"/>
+    <!-- 
+	Add a logger configuration to see logging messages.		
+	- For more detailed logs, set values to "FINEST"
+	- For info on logging levels, see: http://www.vogella.com/tutorials/Logging/article.html
+ -->
+    <bean id="myLoggerConfig" class="spring.constr.inject.MyLoggerConfig" init-method="initLogger">
+    	<property name="rootLoggerLevel" value="FINE" />
+    	<property name="printedLoggerLevel" value="FINE"/>
+    </bean>
+    
+    
+    <!-- Define your beans here -->
+    
+    <bean id="myBean" class="spring.constr.inject.HondaHero"> </bean>
+    
+     <bean id="bike" class = "spring.constr.inject.Bike" scope = "prototype">
+     
+      <property name="colour" value="${bike.name}" />
+    <property name="speed" value="${bike.price}" />
+    
+  <!--   <property name="colour" value="Red" />
+    <property name="speed" value="180" /> -->
+     </bean>
+    
+    <bean id="container" class = "spring.constr.inject.Car">
+    <!-- <property name="honda" ref="myBean" />-->
+    
+     <!-- Constuctor inject -->
+     <constructor-arg ref = "myBean"/>
+   
+    </bean>
+    
+   
+    
+    
+    
+</beans>
+
+
+
+
+
