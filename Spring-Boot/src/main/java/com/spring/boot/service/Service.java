@@ -65,6 +65,7 @@ public class Service {
 		}
 		return false;
 	}
+	
 
 	public static Map<String, Object> insertStudentInfo(Student student) {
 		

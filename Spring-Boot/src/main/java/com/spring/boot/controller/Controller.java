@@ -18,9 +18,6 @@ import com.spring.boot.service.Service;
 public class Controller {
 
 	private static boolean status = false;
-	// private static boolean regStatus = false;
-	// private final static String uName = "admin";
-	// private final static String uPass = "admin";
 
 	@PostMapping("/registration")
 	public static String registration(@RequestBody Registraction reg) {
@@ -30,46 +27,66 @@ public class Controller {
 	}
 
 	@PostMapping("/login")
-	public static String login(@RequestBody Registraction reg) {
+	public static Map<String, Object> login(@RequestBody Registraction reg) {
+		Map<String, Object> map = new HashMap<String, Object>();
 
 		boolean statusLogin = Service.logIn(reg.getuName(), reg.getuPass());
-
 		if (statusLogin) {
 			status = true;
 			System.out.println("UserName : " + reg.getuName() + " Password : " + reg.getuPass());
-			return "login succussfully...";
+			map.put("status", true);
+			map.put("result", "login succussfully...");
 		} else {
 			status = false;
-			return "user not register...";
+			map.put("status", false);
+			map.put("result", "user not login...");
 		}
+		return map;
+	}
+
+	@PostMapping("/logout")
+	public static Map<String, Object> logout(@RequestBody Registraction reg) {
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		boolean statusLogin = Service.logIn(reg.getuName(), reg.getuPass());
+		if (statusLogin && status) {
+			status = false;
+			map.put("status", true);
+			map.put("result", "logout succussfully...");
+		} else {
+			status = false;
+			map.put("status", false);
+			map.put("result", "user not login...");
+		}
+		return map;
 	}
 
 	@GetMapping("/getAllInfo")
 	public static List<Map<String, Object>> getAllInfo() throws Exception {
-		if (status) {
-			return Service.getAllInfo();
-		}
-
 		List<Map<String, Object>> stu = new ArrayList<Map<String, Object>>();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("status", false);
-		map.put("result", "Invalid Login...");
-		stu.add(map);
-		return stu;
 
+		if (status) {
+			return Service.getAllInfo();
+		} else {
+			map.put("status", false);
+			map.put("result", "User Not Login...");
+			stu.add(map);
+		}
+		return stu;
 	}
 
 	@PostMapping("/insertStudentInfo")
 	public static Map<String, Object> insertStudentInfo(@RequestBody Student student) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
+
 		if (status) {
 			return Service.insertStudentInfo(student);
-		}else {
+		} else {
 			map.put("status", false);
 			map.put("result", "Invalid Login...");
 		}
 		return map;
 	}
-	
 
 }
