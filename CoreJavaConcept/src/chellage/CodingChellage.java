@@ -7,6 +7,26 @@ public class CodingChellage {
 
 	public static void main(String[] args) {
 		
+		//pre and post increments
+		
+		int a = 5;
+		
+		int c = a++ + a++;
+		
+		System.out.println(c);
+		
+		int d = a++ + ++a;
+		
+		System.out.println(d);
+		
+		int e = ++a + a++;
+		
+		System.out.println(e);
+		
+		int f = ++a + ++a;
+		
+		System.out.println(f);
+		
 		//Count Repect Char 
 		String name = "ganapathi";
 
