@@ -23,7 +23,7 @@ public class Controller {
 	public static String registration(@RequestBody Registraction reg) {
 		boolean statusLogin = Service.registration(reg);
 
-		return (statusLogin) ? "Registration Successfully." : "error occure...";
+		return (statusLogin) ? "Registration Successfully." : "input not valied...";
 	}
 
 	@PostMapping("/login")

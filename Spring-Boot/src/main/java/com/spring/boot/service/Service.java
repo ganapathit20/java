@@ -27,9 +27,24 @@ public class Service {
 	public static boolean registration(Registraction reg) {
 		try {
 			if (reg != null) {
+				
+				boolean isActive = true;
+				
+				Statement statement = getConnection().createStatement();
+
+				ResultSet resultSet = statement.executeQuery("select * from registration");
+
+				while (resultSet.next()) {
+					if (resultSet.getString("uName").equals(reg.getuName()) ) {
+						isActive = false;
+					}
+				}
 
 				PreparedStatement ps = getConnection().prepareStatement(
 						"INSERT INTO registration(name, email, mobileno, uname, upass) VALUES (?,?,?,?,?)");
+				if(isActive && null != reg.getName() && null != reg.getEmail() && null != reg.getMobileNo()
+						&& null != reg.getuName() && null != reg.getuPass() && !reg.getName().isEmpty() && !reg.getEmail().isEmpty() && !reg.getMobileNo().isEmpty()
+						&& !reg.getuName().isEmpty() && !reg.getuPass().isEmpty()) {
 				ps.setString(1, reg.getName());
 				ps.setString(2, reg.getEmail());
 				ps.setString(3, reg.getMobileNo());
@@ -38,6 +53,7 @@ public class Service {
 
 				ps.executeUpdate();
 				return true;
+				}
 			}
 
 		} catch (Exception ex) {
