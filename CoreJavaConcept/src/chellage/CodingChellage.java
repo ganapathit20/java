@@ -6,28 +6,42 @@ import java.util.Map;
 public class CodingChellage {
 
 	public static void main(String[] args) {
-		
-		//pre and post increments
-		
+
+		// Pointing String pool Constant
+		String persion1 = "demo";
+
+		String persion2 = "demo";
+
+		System.out.println(persion1 == persion2);
+
+		// Pointing reference/memory address
+		String persion3 = new String("demo");
+
+		String persion4 = new String("demo");
+
+		System.out.println(persion3 == persion4);
+
+		// pre and post increments
+
 		int a = 5;
-		
-		int c = a++ + a++;
-		
-		System.out.println(c);
-		
+
+		int c1 = a++ + a++;
+
+		System.out.println(c1);
+
 		int d = a++ + ++a;
-		
+
 		System.out.println(d);
-		
+
 		int e = ++a + a++;
-		
+
 		System.out.println(e);
-		
+
 		int f = ++a + ++a;
-		
+
 		System.out.println(f);
-		
-		//Count Repect Char 
+
+		// Count Repect Char
 		String name = "ganapathi";
 
 		char[] nameArr = name.toCharArray();
@@ -50,7 +64,6 @@ public class CodingChellage {
 
 		}
 
-
 		// Check given number binary or not
 		boolean isTrue = true;
 
@@ -69,7 +82,6 @@ public class CodingChellage {
 			System.out.println("Not Binary");
 		}
 
-		
 		// String reversal
 		String inputName = "mithunraj";
 
@@ -139,7 +151,7 @@ public class CodingChellage {
 			}
 
 		}
-		
+
 		// Count Repect letter
 		String str1 = "abcdABCDabcd";
 
@@ -155,41 +167,38 @@ public class CodingChellage {
 		}
 
 		// System.out.println(charsCount);
-		
-		
-		
-		String binaryValue="10101110";
+
+		String binaryValue = "10101110";
 
 		char[] byteValue = binaryValue.toCharArray();
 
 		String one = "";
 		String zero = "";
 
-		for(int i=0; i<byteValue.length; i++) {
+		for (int i = 0; i < byteValue.length; i++) {
 
-			if(byteValue[i]=='1') {
+			if (byteValue[i] == '1') {
 				one += byteValue[i];
-			}else{
+			} else {
 				zero += byteValue[i];
 			}
 		}
 
 		System.out.println(one + zero);
-		System.out.println(zero + one);		
-		
-//		String name1 = "ganapathi";
-//		String name2 = "ganapathi";
-		
+		System.out.println(zero + one);
+
+		// String name1 = "ganapathi";
+		// String name2 = "ganapathi";
+
 		String name1 = new String("ganapathi");
 		String name2 = new String("ganapathi");
-		
-		if(name1 == name2) 
-		System.out.println("is correct");
-		else if(name1.equals(name2))
+
+		if (name1 == name2)
+			System.out.println("is correct");
+		else if (name1.equals(name2))
 			System.out.println("ok");
 		else
 			System.out.println("not correct");
-	
 
 	}
 
