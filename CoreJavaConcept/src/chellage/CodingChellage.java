@@ -199,6 +199,46 @@ public class CodingChellage {
 			System.out.println("ok");
 		else
 			System.out.println("not correct");
+		
+		
+		
+		// Swap without 3rd variable:
+				int number1 = 5;
+				int number2 = 10;
+
+				System.out.println("befor change : " + number1 + " and " + number2);
+
+				number1 = number1 + number2;
+				number2 = number1 - number2;
+				number1 = number1 - number2;
+
+				System.out.println("befor change : " + number1 + " and " + number2);
+
+				// Factorial numbers:
+				int fact = 5;
+				int finalFact = 1;
+				for (int i = 1; i <= fact; i++) {
+					finalFact *= i;
+				}
+				System.out.println("Factorial is : " + finalFact);
+
+				// Fibonacci series:
+
+				int firstNumber = 0;
+				int secondNumber = 1;
+
+				System.out.println(firstNumber + "\n" + secondNumber);
+
+				for (int i = 2; i <= 5; i++) {
+
+					int total = firstNumber + secondNumber;
+					System.out.println(total);
+					firstNumber = secondNumber;
+
+					secondNumber = total;
+				}
+				
+				
 
 	}
 
